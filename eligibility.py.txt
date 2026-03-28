@@ -1,0 +1,18 @@
+import json
+
+def load_schemes():
+    with open("schemes.json") as f:
+        return json.load(f)
+
+def check_eligibility(user):
+    schemes = load_schemes()
+    eligible = []
+
+    for s in schemes:
+        if user["income"] <= s["income_limit"] \
+        and user["age"] >= s["age_min"] \
+        and (s["gender"] == "Any" or user["gender"] == s["gender"]) \
+        and (s["category"] == user["category"]):
+            eligible.append(s)
+
+    return eligible

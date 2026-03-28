@@ -1,0 +1,19 @@
+from eligibility import check_eligibility
+
+# AGENT 1 — Eligibility Agent
+def eligibility_agent(user):
+    return check_eligibility(user)
+
+# AGENT 2 — Ranking Agent
+def ranking_agent(schemes):
+    # simple ranking based on income limit (lower limit = higher priority)
+    ranked = sorted(schemes, key=lambda x: x["income_limit"])
+    return ranked
+
+# AGENT 3 — Explanation Agent
+def explanation_agent(user, schemes):
+    explanations = []
+    for s in schemes:
+        exp = f"You are eligible for {s['scheme_name']} because your income is below {s['income_limit']} and you belong to {user['category']} category."
+        explanations.append(exp)
+    return explanations

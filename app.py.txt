@@ -1,0 +1,48 @@
+import streamlit as st
+from agents import eligibility_agent, ranking_agent, explanation_agent
+
+st.title("AI Government Scheme Advisor 🇮🇳")
+
+age = st.number_input("Enter Age")
+income = st.number_input("Enter Annual Income")
+
+gender = st.selectbox("Gender", ["Male", "Female"])
+
+category = st.selectbox(
+    "Category",
+    ["Student", "Farmer", "Entrepreneur"]
+)
+
+if st.button("Check Eligibility"):
+
+    user = {
+        "age": age,
+        "income": income,
+        "gender": gender,
+        "category": category
+    }
+
+    eligible = eligibility_agent(user)
+    ranked = ranking_agent(eligible)
+    explanations = explanation_agent(user, ranked)
+
+    if ranked:
+        st.success("Top Recommended Schemes:")
+
+        for i in range(len(ranked)):
+            st.write("⭐", ranked[i]["scheme_name"])
+            st.write("Benefit:", ranked[i]["benefits"])
+            st.info(explanations[i])
+
+    else:
+        st.error("No schemes found")
+
+    result = check_eligibility(user)
+
+    if result:
+        st.success("You are eligible for:")
+        for r in result:
+            st.write("✅", r["scheme_name"])
+            st.write("Benefit:", r["benefits"])
+    else:
+        st.error("No schemes found")

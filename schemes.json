@@ -1,0 +1,29 @@
+[
+  {
+    "scheme_name": "PM Kisan",
+    "income_limit": 200000,
+    "category": "Farmer",
+    "gender": "Any",
+    "age_min": 18,
+    "benefits": "₹6000 per year",
+    "state": "All"
+  },
+  {
+    "scheme_name": "Post Matric Scholarship",
+    "income_limit": 250000,
+    "category": "Student",
+    "gender": "Any",
+    "age_min": 15,
+    "benefits": "Scholarship support",
+    "state": "All"
+  },
+  {
+    "scheme_name": "Women Entrepreneurship Scheme",
+    "income_limit": 300000,
+    "category": "Entrepreneur",
+    "gender": "Female",
+    "age_min": 18,
+    "benefits": "Loan subsidy",
+    "state": "All"
+  }
+]
